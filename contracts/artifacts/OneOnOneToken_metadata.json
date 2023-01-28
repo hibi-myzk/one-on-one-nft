@@ -150,13 +150,7 @@
 					}
 				],
 				"name": "close",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
+				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
 			},
@@ -188,6 +182,25 @@
 					}
 				],
 				"name": "getClosedAt",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "getFontSize",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -274,11 +287,16 @@
 					},
 					{
 						"internalType": "string",
-						"name": "word",
+						"name": "topic",
 						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "fontSize",
+						"type": "uint256"
 					}
 				],
-				"name": "mintToken",
+				"name": "mint",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -331,6 +349,19 @@
 			{
 				"inputs": [],
 				"name": "renounceOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "reopen",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -400,6 +431,24 @@
 					}
 				],
 				"name": "setApprovalForAll",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "fontSize",
+						"type": "uint256"
+					}
+				],
+				"name": "setFontSize",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -657,14 +706,21 @@
 			]
 		},
 		"contracts/OneOnOneToken.sol": {
-			"keccak256": "0x032f11d097b435e92255390d4e80f9f034c0241468dbc61ef9ffde6a27ff12a5",
+			"keccak256": "0xfce73a81bae478b41c3aee65d87d56b6117f533845724811623b52b6de674841",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://cb9d781f12c144ea53fccc95e607afd7cd7c6961831ffb0e96f72e26ddf3a87a",
-				"dweb:/ipfs/QmbrcrGLsEZmyCWVjjLMJfCrXpmSiAFjgMWodcrtVhoe3L"
+				"bzz-raw://f3f23834bc22b84ffcb77fe0a1b4e3ee3ac728d9375eafc775a5539d29a48e86",
+				"dweb:/ipfs/QmNW8WPs5YWAEiZHt2dRVHUwGgyMLTNcgRc9rdT3zMeRnT"
 			]
 		},
-		"contracts/lib/Base64.sol": {
+		"github.com/Arachnid/solidity-stringutils/src/strings.sol": {
+			"keccak256": "0x9e064fd116cdd5ed4b0132d0606a372bd94ff243c0520bc723fb6b09e947c16e",
+			"urls": [
+				"bzz-raw://93d1a36262aa498a85ac7a275ead2cf410b9c674d6bef09d0972203cb33b724e",
+				"dweb:/ipfs/QmY9T4HKDbPXEZPHzXaFbd2M86fV1Q68sBJYh8J9LDFApU"
+			]
+		},
+		"github.com/zlayine/epic-game-buildspace/contracts/libraries/Base64.sol": {
 			"keccak256": "0x2a678b6003264920f6f82ec8b20ee2ad01213fe7998e592f9c182f717960cfc2",
 			"license": "MIT",
 			"urls": [
