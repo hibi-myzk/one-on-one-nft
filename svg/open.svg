@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet" viewBox="0 0 350 350">
+<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet" viewBox="0 0 350 350" overflow="hidden">
     <style>.f{font-family:sans-serif;font-size:40px; fill:#000}</style>
     <rect x="0" y="0" width="350" height="350" fill="#1e90ff" />
     <rect x="10" y="10" width="330" height="330" fill="#00bfff" />
