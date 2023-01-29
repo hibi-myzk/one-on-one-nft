@@ -6,9 +6,10 @@
   "scripts": {
     "start:dev": "npx nodemon",
     "copy-json": "cp -r src/*.json build/",
-    "build": "rm -rf dist/app.*.js && rimraf ./build && tsc && npm run copy-json && npm run dist",
+    "copy-docs": "cp -r dist/* ../docs/",
+    "build": "rm -rf dist/* && rimraf ./build && tsc && npm run copy-json && npm run dist",
     "start": "npm run build && node build/app.js",
-    "dist": "parcel build index.html --public-url ./ && cp -r public/* dist/"
+    "dist": "parcel build index.html --public-url ./ && cp -r public/* dist/ && npm run copy-docs"
   },
   "dependencies": {
     "@maticnetwork/maticjs-web3": "^1.0.4",

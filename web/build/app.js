@@ -8,10 +8,10 @@ const maticjs_web3_1 = require("@maticnetwork/maticjs-web3");
 const web3_1 = __importDefault(require("web3"));
 const detect_provider_1 = __importDefault(require("@metamask/detect-provider"));
 const contractAbi = require('./contract_abi.json');
-// Mumbai testnet
-const CONTRAT_ADDRESS = '0x1457988605A5A629fA6c53b7e5459d0f1A5d6017';
-// Polygon mainnet
-//const CONTRAT_ADDRESS = '0x3B64768cA0b3d9a2fa731b402f9f775269E2E343';
+// Mumbai Testnet
+const TEST_CONTRAT_ADDRESS = '0x1457988605A5A629fA6c53b7e5459d0f1A5d6017';
+// Polygon Mainnet
+const CONTRAT_ADDRESS = '0x3B64768cA0b3d9a2fa731b402f9f775269E2E343';
 (0, maticjs_1.use)(maticjs_web3_1.Web3ClientPlugin);
 const posClient = new maticjs_1.POSClient();
 let contract;
@@ -53,16 +53,28 @@ window.onload = async () => {
         console.log('accountsChanged', id);
         window.location.reload();
     });
-    contract = new web3.eth.Contract(contractAbi, CONTRAT_ADDRESS);
+    const chainId = await web3.eth.getChainId();
+    console.log('[INFO] chainId', chainId);
+    const netPara = document.querySelector('#network');
+    if (chainId == 80001) {
+        contract = new web3.eth.Contract(contractAbi, TEST_CONTRAT_ADDRESS);
+        netPara.innerHTML = 'Mumbai Testnet';
+    }
+    else if (chainId == 137) {
+        contract = new web3.eth.Contract(contractAbi, CONTRAT_ADDRESS);
+        netPara.innerHTML = 'Polygon Mainnet';
+    }
+    else {
+        return alert('Please switch to Polygon mainnet or Mumbai testnet');
+    }
     if (account) {
         listNFT();
     }
     btnConnect.addEventListener('click', async () => {
         await window.ethereum.send('eth_requestAccounts');
         const from = window.ethereum.selectedAddress;
-        const chainId = await web3.eth.getChainId();
         // if network is goerli, then it is parent
-        const isParent = chainId === 5;
+        //const isParent = chainId === 5;
         // const mainWeb3 = new Web3('https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161');
         // const maticWeb3 = new Web3('https://rpc-mumbai.maticvigil.com');
         // const maticWeb3 = new Web3('https://rpc-mumbai.matic.today');
