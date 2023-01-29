@@ -12,7 +12,7 @@ contract OneOnOneTokenTest {
     }
 
     function testTokenNameAndSymbol () public {
-        Assert.equal(t.name(), "1on1 Token", "token name did not match");
+        Assert.equal(t.name(), "1on1 NFT", "token name did not match");
         Assert.equal(t.symbol(), "OOO", "token symbol did not match");
     }
 

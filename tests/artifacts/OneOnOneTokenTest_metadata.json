@@ -54,14 +54,6 @@
 		"remappings": []
 	},
 	"sources": {
-		"@openzeppelin/contracts/access/Ownable.sol": {
-			"keccak256": "0xa94b34880e3c1b0b931662cb1c09e5dfa6662f31cba80e07c5ee71cd135c9673",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://40fb1b5102468f783961d0af743f91b9980cf66b50d1d12009f6bb1869cea4d2",
-				"dweb:/ipfs/QmYqEbJML4jB1GHbzD4cUZDtJg5wVwNm3vDJq1GbyDus8y"
-			]
-		},
 		"@openzeppelin/contracts/token/ERC721/ERC721.sol": {
 			"keccak256": "0xd89f3585b211fc9e3408384a4c4efdc3a93b2f877a3821046fa01c219d35be1b",
 			"license": "MIT",
@@ -143,11 +135,11 @@
 			]
 		},
 		"contracts/OneOnOneToken.sol": {
-			"keccak256": "0xa57d0ae25283b8cea269b312aa43dbfe2dea8ba0add51ed8572a0ce5525c3960",
+			"keccak256": "0x728add3995ff84712ea11267bb5e159351fd6736c6a02599c95c7e96af3d7725",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://be9d9a8014c6d20e5a745d87a991615e91fd92fa607e49a99f1e5da96bff0525",
-				"dweb:/ipfs/QmdqrXWVQ1iF2P9kcmmyt4tjXgngMdNwMNZyTVRc7Gs7nz"
+				"bzz-raw://a369e80961f4dd95bba3dc99dcce1b064b65dc59d40adff48cb97023932fffab",
+				"dweb:/ipfs/QmX9XtpDUa9awzu5RRyZeNy2JZkS7iK2JCWht1sXAeWbkS"
 			]
 		},
 		"github.com/Arachnid/solidity-stringutils/src/strings.sol": {
@@ -174,11 +166,11 @@
 			]
 		},
 		"tests/OneOnOneToken_test.sol": {
-			"keccak256": "0x12e1500c9fd28e2b7a26ed9513863b13c8070087633e1b384f349c23972a2ac9",
+			"keccak256": "0x97a21d8871f5ccbc49fe320982ab6ef97321fc5476814ad9e41acf3546fb8256",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://d68af54ed04f9346ca995d552f67142f524b1040da3db8204ab8efd855f32fad",
-				"dweb:/ipfs/QmSPjBMd6RFPwSkoXLXzUEQiPqT7eBgJs2LGNcBbyQ5xVh"
+				"bzz-raw://398ae2fbe072bde6867d6ae0819a1c19d42a5ad8bb52566056dfc4e7db8b5e20",
+				"dweb:/ipfs/QmWG7k7wBCgyeKnB4Es4H4AEtuv7Bqbq19GauEEZr54Kua"
 			]
 		}
 	},

@@ -2,55 +2,59 @@
 pragma solidity >=0.8.7 <0.9.0;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 import "github.com/zlayine/epic-game-buildspace/contracts/libraries/Base64.sol";
 import "github.com/Arachnid/solidity-stringutils/src/strings.sol";
 
-contract OneOnOneToken is ERC721, Ownable {
-    string private _topicDelimiter = "//";
+contract OneOnOneToken is ERC721 {
+    struct Topic {
+        string name;
+        string description;
+        string topic;
+        uint256 fontSize;
+        uint256 openedAt;
+        uint256 closedAt;
+    }
 
-    string[] private _names;
-    string[] private _descriptions;
-    string[] private _topics;
-    uint256[] private _openedAtArray;
-    uint256[] private _closedAtArray;
-    uint256[] private _fontSizeArray;
+    string private _topicDelimiter = "//";
+    Topic[] private _topics;
 
     constructor() ERC721("1on1 NFT", "OOT") {}
 
     function mint(string calldata name, string calldata description, string calldata topic, uint256 fontSize) external {
-        uint256 tokenId = _names.length;
+        uint256 tokenId = _topics.length;
         _safeMint(msg.sender, tokenId);
 
-        _names.push(name);
-        _descriptions.push(description);
-        _topics.push(topic);
-        _fontSizeArray.push(fontSize);
-        _closedAtArray.push(0);
-        _openedAtArray.push(block.timestamp);
+        _topics.push(Topic(
+            name,
+            description,
+            topic,
+            fontSize,
+            block.timestamp,
+            0
+        ));
     }
 
     function totalSupply() public view returns (uint) {
-        return _names.length;
+        return _topics.length;
     }
 
     function getOpenedAt(uint256 tokenId) external view returns (uint256) {
         require(_exists(tokenId), "nonexsitent token");
 
-        return _openedAtArray[tokenId];
+        return _topics[tokenId].openedAt;
     }
 
     function getClosedAt(uint256 tokenId) external view returns (uint256) {
         require(_exists(tokenId), "nonexsitent token");
 
-        return _closedAtArray[tokenId];
+        return _topics[tokenId].closedAt;
     }
 
     function isClosed(uint256 tokenId) external view returns (bool) {
         require(_exists(tokenId), "nonexsitent token");
 
-        return (0 < _closedAtArray[tokenId]);
+        return (0 < _topics[tokenId].closedAt);
     }
 
     function close(uint256 tokenId) public {
@@ -58,7 +62,7 @@ contract OneOnOneToken is ERC721, Ownable {
         require(this.ownerOf(tokenId) == msg.sender, "owner only");
         require(this.isClosed(tokenId) == false, "already closed");
 
-        _closedAtArray[tokenId] = block.timestamp;
+        _topics[tokenId].closedAt = block.timestamp;
     }
 
     function reopen(uint256 tokenId) public {
@@ -66,42 +70,41 @@ contract OneOnOneToken is ERC721, Ownable {
         require(this.ownerOf(tokenId) == msg.sender, "owner only");
         require(this.isClosed(tokenId), "already opened");
 
-        _closedAtArray[tokenId] = 0;
-        _openedAtArray[tokenId] = block.timestamp;
+        _topics[tokenId].closedAt = 0;
+        _topics[tokenId].openedAt = block.timestamp;
     }
 
     function getFontSize(uint256 tokenId) external view returns (uint256) {
         require(_exists(tokenId), "nonexsitent token");
         require(this.ownerOf(tokenId) == msg.sender, "owner only");
 
-        return _fontSizeArray[tokenId];
+        return _topics[tokenId].fontSize;
     }
 
     function setFontSize(uint256 tokenId, uint256 fontSize) external {
         require(_exists(tokenId), "nonexsitent token");
         require(this.ownerOf(tokenId) == msg.sender, "owner only");
 
-        _fontSizeArray[tokenId] = fontSize;
+        _topics[tokenId].fontSize = fontSize;
     }
 
     function tokenURI(uint256 tokenId) public view override returns (string memory) {
         require(_exists(tokenId), "nonexsitent token");
 
-        string memory topic = _topics[tokenId];
+        Topic memory topic = _topics[tokenId];
         string memory delim = _topicDelimiter;
-        uint256 fontSize = _fontSizeArray[tokenId];
 
         bytes memory bytesName = abi.encodePacked(
-            '"name":"', _names[tokenId], '"'
+            '"name":"', topic.name, '"'
         );
 
         bytes memory bytesDesc = abi.encodePacked(
-            '"description":"', _descriptions[tokenId], '"'
+            '"description":"', topic.description, '"'
         );
 
         bytes memory bytesImage = abi.encodePacked(
             '"image":"data:image/svg+xml;base64,',
-            Base64.encode(createSVG(topic, delim, fontSize, this.isClosed(tokenId))),
+            Base64.encode(createSVG(topic.topic, delim, topic.fontSize, this.isClosed(tokenId))),
             '"'
         );
 
@@ -124,7 +127,8 @@ contract OneOnOneToken is ERC721, Ownable {
     function createSVG(string memory topic, string memory delim, uint256 fontSize, bool closed) internal pure returns (bytes memory) {
         string[] memory lines = split(topic, delim);
 
-        uint256 y = fontSize + 10;
+        uint256 d = fontSize + 10;
+        uint256 y = d;
         strings.slice memory text = strings.toSlice("");
 
         for (uint i=0; i< lines.length; i++) {
@@ -136,7 +140,7 @@ contract OneOnOneToken is ERC721, Ownable {
             text = strings.toSlice(strings.concat(text, strings.toSlice(l)));
             text = strings.toSlice(strings.concat(text, strings.toSlice('</tspan>')));
 
-            y *= 2;
+            y += d;
         }
 
         bytes memory bytesTopic = abi.encodePacked(
