@@ -505,6 +505,19 @@
 				"type": "function"
 			},
 			{
+				"inputs": [],
+				"name": "totalSupply",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "address",
@@ -706,11 +719,11 @@
 			]
 		},
 		"contracts/OneOnOneToken.sol": {
-			"keccak256": "0xfce73a81bae478b41c3aee65d87d56b6117f533845724811623b52b6de674841",
+			"keccak256": "0x40e78db29d78c63e75cd361664d26531553d95037904d06ff782ea75acb9c766",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://f3f23834bc22b84ffcb77fe0a1b4e3ee3ac728d9375eafc775a5539d29a48e86",
-				"dweb:/ipfs/QmNW8WPs5YWAEiZHt2dRVHUwGgyMLTNcgRc9rdT3zMeRnT"
+				"bzz-raw://3ae0b6263c1bd213c7f66d2338baaf89f63268ab090c7dd7f9bad263acd5b3bc",
+				"dweb:/ipfs/QmNhRNdYcjykxKeeDuQXyTwBXNQ75mcfLDCKLNFbvFDrLp"
 			]
 		},
 		"github.com/Arachnid/solidity-stringutils/src/strings.sol": {

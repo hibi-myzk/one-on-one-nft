@@ -1,0 +1,29 @@
+{
+  "name": "one-on-one-nft",
+  "version": "1.0.0",
+  "description": "1on1 NFT",
+  "main": "./build/app.js",
+  "scripts": {
+    "start:dev": "npx nodemon",
+    "copy-json": "cp -r src/*.json build/",
+    "build": "rm -rf dist/app.*.js && rimraf ./build && tsc && npm run copy-json && npm run dist",
+    "start": "npm run build && node build/app.js",
+    "dist": "parcel build index.html --public-url ./ && cp -r public/* dist/"
+  },
+  "dependencies": {
+    "@maticnetwork/maticjs-web3": "^1.0.4",
+    "@metamask/detect-provider": "^2.0.0",
+    "@truffle/hdwallet-provider": "^2.1.5",
+    "web3": "^1.8.1"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^8.2.0",
+    "@types/node": "^18.11.18",
+    "dotenv": "^16.0.3",
+    "nodemon": "^2.0.20",
+    "parcel-bundler": "^1.12.5",
+    "rimraf": "^3.0.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.4"
+  }
+}

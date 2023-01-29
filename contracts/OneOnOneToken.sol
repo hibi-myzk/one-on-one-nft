@@ -17,7 +17,7 @@ contract OneOnOneToken is ERC721, Ownable {
     uint256[] private _closedAtArray;
     uint256[] private _fontSizeArray;
 
-    constructor() ERC721("1on1 Token", "OOT") {}
+    constructor() ERC721("1on1 NFT", "OOT") {}
 
     function mint(string calldata name, string calldata description, string calldata topic, uint256 fontSize) external {
         uint256 tokenId = _names.length;
@@ -29,6 +29,10 @@ contract OneOnOneToken is ERC721, Ownable {
         _fontSizeArray.push(fontSize);
         _closedAtArray.push(0);
         _openedAtArray.push(block.timestamp);
+    }
+
+    function totalSupply() public view returns (uint) {
+        return _names.length;
     }
 
     function getOpenedAt(uint256 tokenId) external view returns (uint256) {
@@ -52,7 +56,7 @@ contract OneOnOneToken is ERC721, Ownable {
     function close(uint256 tokenId) public {
         require(_exists(tokenId), "nonexsitent token");
         require(this.ownerOf(tokenId) == msg.sender, "owner only");
-        require(this.isClosed(tokenId), "already closed");
+        require(this.isClosed(tokenId) == false, "already closed");
 
         _closedAtArray[tokenId] = block.timestamp;
     }
