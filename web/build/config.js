@@ -6,6 +6,10 @@
 // });
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.config = void 0;
+// if (env.error) {
+//     throw new Error("no env file found");
+// }
+// import Web3 from "web3";
 // const mainWeb3 = new Web3("https://goerli.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161");
 // const maticWeb3 = new Web3("https://rpc-mumbai.maticvigil.com");
 const config = {

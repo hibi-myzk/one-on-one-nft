@@ -8,7 +8,10 @@ const maticjs_web3_1 = require("@maticnetwork/maticjs-web3");
 const web3_1 = __importDefault(require("web3"));
 const detect_provider_1 = __importDefault(require("@metamask/detect-provider"));
 const contractAbi = require('./contract_abi.json');
-const CONTRAT_ADDRESS = '0x0e1aCf2bb5e94DfDe6c8564249Bdf6c833493f80';
+// Mumbai testnet
+const CONTRAT_ADDRESS = '0x1457988605A5A629fA6c53b7e5459d0f1A5d6017';
+// Polygon mainnet
+//const CONTRAT_ADDRESS = '0x3B64768cA0b3d9a2fa731b402f9f775269E2E343';
 (0, maticjs_1.use)(maticjs_web3_1.Web3ClientPlugin);
 const posClient = new maticjs_1.POSClient();
 let contract;
@@ -96,6 +99,7 @@ const getMetadata = async (tokenId) => {
 const listNFT = async () => {
     const count = await contract.methods.totalSupply().call();
     console.log('[INFO] totalSupply', count);
+    // 0 is a failure on Polygon mainanet 
     for (let i = 0; i < count; i++) {
         appendNFT(contract, String(i));
     }

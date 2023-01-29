@@ -5,7 +5,10 @@ import detectEthereumProvider from '@metamask/detect-provider';
 import { config } from './config';
 const contractAbi = require('./contract_abi.json');
 
-const CONTRAT_ADDRESS = '0x0e1aCf2bb5e94DfDe6c8564249Bdf6c833493f80';
+// Mumbai testnet
+const CONTRAT_ADDRESS = '0x1457988605A5A629fA6c53b7e5459d0f1A5d6017';
+// Polygon mainnet
+//const CONTRAT_ADDRESS = '0x3B64768cA0b3d9a2fa731b402f9f775269E2E343';
 
 use(Web3ClientPlugin);
 
@@ -112,6 +115,7 @@ const listNFT = async () => {
     const count: number = await contract.methods.totalSupply().call();
     console.log('[INFO] totalSupply', count)
 
+    // 0 is a failure on Polygon mainanet 
     for (let i = 0; i < count; i++) {
         appendNFT(contract, String(i));
     }
