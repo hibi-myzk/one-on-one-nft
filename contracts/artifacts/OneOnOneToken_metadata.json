@@ -181,6 +181,25 @@
 						"type": "uint256"
 					}
 				],
+				"name": "getDescription",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
 				"name": "getFontSize",
 				"outputs": [
 					{
@@ -200,12 +219,50 @@
 						"type": "uint256"
 					}
 				],
+				"name": "getName",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
 				"name": "getOpenedAt",
 				"outputs": [
 					{
 						"internalType": "uint256",
 						"name": "",
 						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "getTopic",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
 					}
 				],
 				"stateMutability": "view",
@@ -404,12 +461,66 @@
 						"type": "uint256"
 					},
 					{
+						"internalType": "string",
+						"name": "description",
+						"type": "string"
+					}
+				],
+				"name": "setDescription",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					},
+					{
 						"internalType": "uint256",
 						"name": "fontSize",
 						"type": "uint256"
 					}
 				],
 				"name": "setFontSize",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					}
+				],
+				"name": "setName",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "topic",
+						"type": "string"
+					}
+				],
+				"name": "setTopic",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -650,11 +761,11 @@
 			]
 		},
 		"contracts/OneOnOneToken.sol": {
-			"keccak256": "0x728add3995ff84712ea11267bb5e159351fd6736c6a02599c95c7e96af3d7725",
+			"keccak256": "0x39259f662ed482bda2285c6b94f402dfc4acca421bed65a7a5d48b7afd2522ee",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://a369e80961f4dd95bba3dc99dcce1b064b65dc59d40adff48cb97023932fffab",
-				"dweb:/ipfs/QmX9XtpDUa9awzu5RRyZeNy2JZkS7iK2JCWht1sXAeWbkS"
+				"bzz-raw://6b805723965da3bdd4c5beddfb104fbd196b26d099f1421ad734a8632b6b414d",
+				"dweb:/ipfs/QmeyPjvMAz8N54QQ99CroqKgQuLmXcNJijXEGSrLMQPEz6"
 			]
 		},
 		"github.com/Arachnid/solidity-stringutils/src/strings.sol": {

@@ -11,7 +11,7 @@ const contractAbi = require('./contract_abi.json');
 // Mumbai Testnet
 const TEST_CONTRAT_ADDRESS = '0x1457988605A5A629fA6c53b7e5459d0f1A5d6017';
 // Polygon Mainnet
-const CONTRAT_ADDRESS = '0x3B64768cA0b3d9a2fa731b402f9f775269E2E343';
+const CONTRAT_ADDRESS = '0xfF20f77fCF0207b58697FDd3919B4A51f9402bc8';
 (0, maticjs_1.use)(maticjs_web3_1.Web3ClientPlugin);
 const posClient = new maticjs_1.POSClient();
 let contract;

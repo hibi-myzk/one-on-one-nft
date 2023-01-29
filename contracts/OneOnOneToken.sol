@@ -39,6 +39,45 @@ contract OneOnOneToken is ERC721 {
         return _topics.length;
     }
 
+    function getName(uint256 tokenId) external view returns (string memory) {
+        require(_exists(tokenId), "nonexsitent token");
+
+        return _topics[tokenId].name;
+    }
+
+    function setName(uint256 tokenId, string calldata name) external {
+        require(_exists(tokenId), "nonexsitent token");
+        require(this.ownerOf(tokenId) == msg.sender, "owner only");
+
+        _topics[tokenId].name = name;
+    }
+
+    function getDescription(uint256 tokenId) external view returns (string memory) {
+        require(_exists(tokenId), "nonexsitent token");
+
+        return _topics[tokenId].description;
+    }
+
+    function setDescription(uint256 tokenId, string calldata description) external {
+        require(_exists(tokenId), "nonexsitent token");
+        require(this.ownerOf(tokenId) == msg.sender, "owner only");
+
+        _topics[tokenId].description = description;
+    }
+
+    function getTopic(uint256 tokenId) external view returns (string memory) {
+        require(_exists(tokenId), "nonexsitent token");
+
+        return _topics[tokenId].topic;
+    }
+
+    function setTopic(uint256 tokenId, string calldata topic) external {
+        require(_exists(tokenId), "nonexsitent token");
+        require(this.ownerOf(tokenId) == msg.sender, "owner only");
+
+        _topics[tokenId].topic = topic;
+    }
+
     function getOpenedAt(uint256 tokenId) external view returns (uint256) {
         require(_exists(tokenId), "nonexsitent token");
 
@@ -76,7 +115,6 @@ contract OneOnOneToken is ERC721 {
 
     function getFontSize(uint256 tokenId) external view returns (uint256) {
         require(_exists(tokenId), "nonexsitent token");
-        require(this.ownerOf(tokenId) == msg.sender, "owner only");
 
         return _topics[tokenId].fontSize;
     }
