@@ -6,15 +6,12 @@
   "scripts": {
     "start:dev": "npx nodemon",
     "copy-json": "cp -r src/*.json build/",
-    "copy-docs": "cp -r dist/* ../docs/",
-    "build": "rm -rf dist/* && rimraf ./build && tsc && npm run copy-json && npm run dist",
+    "build": "rm -rf ../docs/* && rimraf ./build && tsc && npm run copy-json && npm run dist",
     "start": "npm run build && node build/app.js",
-    "dist": "parcel build index.html --public-url ./ && cp -r public/* dist/ && npm run copy-docs"
+    "dist": "parcel build index.html --out-dir ../docs --public-url ./ && cp -r public/* ../docs/"
   },
   "dependencies": {
-    "@maticnetwork/maticjs-web3": "^1.0.4",
     "@metamask/detect-provider": "^2.0.0",
-    "@truffle/hdwallet-provider": "^2.1.5",
     "web3": "^1.8.1"
   },
   "devDependencies": {
